@@ -33,7 +33,10 @@ describe('onRehydrateStorage', () => {
       usePrefsStore.getState(),
     );
     postRehydrationCallback?.(
-      { ...usePrefsStore.getState(), notificationPrefs: hydratedNotificationPrefs },
+      {
+        ...usePrefsStore.getState(),
+        notificationPrefs: hydratedNotificationPrefs,
+      },
       undefined,
     );
   }
@@ -70,7 +73,9 @@ describe('onRehydrateStorage', () => {
       new_task: true,
     });
 
-    expect(usePrefsStore.getState().notificationPrefs.reward_confirmed).toBe(false);
+    expect(usePrefsStore.getState().notificationPrefs.reward_confirmed).toBe(
+      false,
+    );
   });
 
   test('handles a completely empty stored prefs object by falling back to full defaults', () => {
